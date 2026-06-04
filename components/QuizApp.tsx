@@ -69,7 +69,7 @@ export function QuizApp() {
       className={`quiz-bg w-full ${isQuiz ? "h-dvh min-h-dvh" : "min-h-dvh"}`}
     >
       <div
-        className={`mx-auto flex w-full max-w-lg flex-col ${
+        className={`mx-auto flex w-full flex-col md:w-1/2 ${
           isQuiz
             ? "h-full px-0 py-0 md:h-auto md:min-h-dvh md:justify-center md:px-6 md:py-8"
             : "min-h-dvh px-4 py-6 sm:px-6 sm:py-10"
@@ -114,7 +114,7 @@ export function QuizApp() {
         </div>
 
         {!isQuiz && (
-          <p className="mt-4 text-center text-xs text-[var(--quiz-muted)]">
+          <p className="mt-4 text-center text-sm text-[var(--quiz-muted)] sm:text-base">
             Fake Sober｜白天人格測驗 ☀️🥐
           </p>
         )}

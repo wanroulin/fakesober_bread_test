@@ -55,6 +55,22 @@ body {
 .quiz-card {
   background: var(--quiz-card);
   border: 1px solid var(--quiz-border);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .quiz-card {
+    font-size: 1.1875rem;
+  }
+}
+
+.bread-step--current {
+  transform: scale(1.05);
+}
+
+.bread-step--done {
+  background: var(--quiz-tag-bg);
 }
 
 .quiz-card--quiz {

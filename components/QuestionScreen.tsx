@@ -10,16 +10,16 @@ export function QuestionScreen({ question, onSelect }: QuestionScreenProps) {
     <div className="question-screen flex min-h-0 flex-1 flex-col gap-4 animate-fade-in sm:gap-5">
       <div className="shrink-0 space-y-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-[var(--quiz-tag-bg)] px-2.5 py-0.5 text-xs font-medium text-[var(--quiz-accent-dark)]">
+          <span className="rounded-full bg-[var(--quiz-tag-bg)] px-3 py-1 text-sm font-semibold text-[var(--quiz-accent-dark)] sm:text-base">
             Q{question.id}
           </span>
           {question.highlight && (
-            <span className="text-xs text-[var(--quiz-muted)]">
+            <span className="text-sm text-[var(--quiz-muted)] sm:text-base">
               {question.highlight}
             </span>
           )}
         </div>
-        <h2 className="text-lg font-bold leading-snug text-[var(--quiz-text)] sm:text-xl">
+        <h2 className="text-xl font-bold leading-snug text-[var(--quiz-text)] sm:text-2xl">
           {question.title}
         </h2>
       </div>
@@ -30,7 +30,7 @@ export function QuestionScreen({ question, onSelect }: QuestionScreenProps) {
             <button
               type="button"
               onClick={() => onSelect(option.type)}
-              className="quiz-option group w-full rounded-2xl border border-[var(--quiz-border)] bg-white px-4 py-3.5 text-left text-sm leading-relaxed text-[var(--quiz-text)] transition-all hover:border-[var(--quiz-accent)] hover:bg-[var(--quiz-option-hover)] active:scale-[0.99] sm:text-base"
+              className="quiz-option group w-full rounded-2xl border border-[var(--quiz-border)] bg-white px-4 py-4 text-left text-base leading-relaxed text-[var(--quiz-text)] transition-all hover:border-[var(--quiz-accent)] hover:bg-[var(--quiz-option-hover)] active:scale-[0.99] sm:px-5 sm:py-4 sm:text-lg"
             >
               <span className="mr-2 font-semibold text-[var(--quiz-accent-dark)]">
                 {String.fromCharCode(65 + index)}.

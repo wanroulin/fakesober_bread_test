@@ -9,14 +9,14 @@ export function BreadHeader() {
         alt="Fake Sober"
         width={72}
         height={72}
-        className="h-16 w-16 object-contain sm:h-[72px] sm:w-[72px]"
+        className="h-20 w-20 object-contain sm:h-24 sm:w-24"
         priority
       />
       <div className="flex w-full max-w-sm items-end justify-center gap-1.5 sm:max-w-md sm:gap-2">
         {BREAD_ORDER.map((type) => (
           <div
             key={type}
-            className="relative flex-1 aspect-square max-w-[3.5rem] sm:max-w-[4.25rem]"
+            className="relative flex-1 aspect-square max-w-[4rem] sm:max-w-[5rem]"
           >
             <Image
               src={BREAD_IMAGES[type]}
