@@ -67,7 +67,9 @@ export function QuizApp() {
               : "flex-1 gap-5 rounded-3xl px-4 py-6 shadow-lg sm:gap-6 sm:px-8 sm:py-8"
           }`}
         >
-          {phase !== "result" && <BreadHeader />}
+          {(phase === "intro" || phase === "quiz") && (
+            <BreadHeader mode={phase === "intro" ? "intro" : "quiz"} />
+          )}
 
           {isQuiz && (
             <ProgressBar

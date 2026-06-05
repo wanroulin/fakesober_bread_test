@@ -156,19 +156,36 @@ body {
   }
 }
 
-/* 五種麵包一字排開，緩慢橫向滑動 */
+/* 首頁麵包：一字排開，緩慢橫向無縫滾動 */
 @keyframes bread-marquee-scroll {
-  0% {
-    transform: translateX(0);
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .bread-marquee-track {
-  animation: bread-marquee-scroll 28s linear infinite;
+  animation: bread-marquee-scroll 22s linear infinite;
   will-change: transform;
+}
+
+.bread-marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
 .bread-marquee-fade {
@@ -193,15 +210,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .bread-marquee-track {
     animation: none;
-    justify-content: center;
-    width: 100%;
+    margin-inline: auto;
   }
 
-  .bread-marquee-duplicate {
+  .bread-marquee-track > :last-child {
     display: none;
   }
 
   .bread-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
     overflow: visible;
   }
 

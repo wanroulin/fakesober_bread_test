@@ -61,17 +61,17 @@ export function ResultScreen({
         </p>
 
         <div className="space-y-5 border-t border-[#e5d9cc] pt-5">
-          <div className="flex flex-row items-center gap-4 sm:gap-6">
-            <div className="relative h-24 w-24 shrink-0 sm:h-28 sm:w-28">
+          <div className="flex flex-row items-center gap-3 sm:gap-4">
+            <div className="w-1/3 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={result.image}
                 alt={result.name}
-                className="h-full w-full object-contain"
+                className="aspect-square w-full object-contain"
               />
             </div>
 
-            <div className="min-w-0 flex-1 text-left">
+            <div className="w-1/2 min-w-0 text-left">
               <h2 className="text-xl font-bold leading-tight text-[#3d2f24] sm:text-2xl">
                 {result.name}
               </h2>
@@ -105,7 +105,7 @@ export function ResultScreen({
 
             <section className="rounded-xl bg-[#ffffffcc] p-4">
               <h3 className="mb-1 text-sm font-semibold text-[#8a7568] sm:text-base">
-                適合飲料
+                推薦飲料
               </h3>
               <p className="font-semibold">{result.drink}</p>
               <p className="mt-1 text-[#8a7568]">{result.drinkNote}</p>
@@ -113,16 +113,16 @@ export function ResultScreen({
 
             <section className="rounded-xl bg-[#ffffffcc] p-4">
               <h3 className="mb-1 text-sm font-semibold text-[#8a7568] sm:text-base">
-                最適合當朋友的麵包
+                合拍麵包
               </h3>
               <p className="font-semibold">{result.friendBread}</p>
               <p className="mt-1 text-[#8a7568]">{result.friendNote}</p>
             </section>
           </div>
 
-          <p className="text-center text-sm text-[#8a7568]">
-            Fake Sober ☀️🥐
-          </p>
+
+
+
         </div>
       </div>
 

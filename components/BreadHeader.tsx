@@ -1,7 +1,12 @@
 import Image from "next/image";
-import { BreadCarousel } from "./BreadCarousel";
+import { BreadIntroMarquee } from "./BreadIntroMarquee";
+import { BreadStaticRow } from "./BreadStaticRow";
 
-export function BreadHeader() {
+type BreadHeaderProps = {
+  mode: "intro" | "quiz";
+};
+
+export function BreadHeader({ mode }: BreadHeaderProps) {
   return (
     <header className="flex flex-col items-center gap-3 px-2">
       <Image
@@ -12,7 +17,11 @@ export function BreadHeader() {
         className="h-20 w-20 object-contain sm:h-24 sm:w-24"
         priority
       />
-      <BreadCarousel className="w-full" />
+      {mode === "intro" ? (
+        <BreadIntroMarquee className="w-full" />
+      ) : (
+        <BreadStaticRow className="w-full" />
+      )}
     </header>
   );
 }
