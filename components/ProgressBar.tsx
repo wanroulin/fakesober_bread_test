@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { BREAD_IMAGES, BREAD_ORDER } from "@/lib/quiz-data";
 import type { BreadType } from "@/lib/types";
@@ -51,6 +53,20 @@ function BreadStep({
   );
 }
 
+function ProgressConnector({ filled }: { filled: boolean }) {
+  return (
+    <div
+      className="progress-line-track relative mx-0.5 min-w-2 flex-1 overflow-hidden rounded-full sm:mx-1"
+      aria-hidden
+    >
+      <div
+        className="progress-line-fill absolute inset-y-0 left-0 w-full rounded-full bg-[var(--quiz-accent-dark)]"
+        data-filled={filled ? "true" : "false"}
+      />
+    </div>
+  );
+}
+
 export function ProgressBar({ current, total }: ProgressBarProps) {
   const steps = PROGRESS_BREADS.slice(0, total);
 
@@ -70,22 +86,16 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
       <div className="flex w-full items-center justify-between gap-0 px-1">
         {steps.map((breadType, index) => {
           const step = index + 1;
-          const lineDone = step < current;
+          const lineFilled = step < current;
 
           return (
-            <div key={step} className="flex min-w-0 flex-1 items-center last:flex-none">
+            <div
+              key={step}
+              className="flex min-w-0 flex-1 items-center last:flex-none"
+            >
               <BreadStep breadType={breadType} step={step} current={current} />
 
-              {index < total - 1 && (
-                <div
-                  className={`mx-0.5 h-0.5 min-w-2 flex-1 rounded-full transition-colors duration-300 sm:mx-1 sm:h-[3px] ${
-                    lineDone
-                      ? "bg-[var(--quiz-accent-dark)]"
-                      : "bg-[var(--quiz-progress-track)]"
-                  }`}
-                  aria-hidden
-                />
-              )}
+              {index < total - 1 && <ProgressConnector filled={lineFilled} />}
             </div>
           );
         })}

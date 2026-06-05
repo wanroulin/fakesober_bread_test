@@ -16,6 +16,15 @@ export const BREAD_IMAGES: Record<BreadType, string> = {
   garlic: "/蒜味奶油乳酪.png",
 };
 
+/** 麵包輪播影片（置於 public/videos/，檔名需與下方一致） */
+export const BREAD_VIDEOS: Record<BreadType, string> = {
+  original: "/videos/原味.mp4",
+  earlgrey: "/videos/伯爵茶.mp4",
+  redbean: "/videos/紅豆奶油.mp4",
+  bacon: "/videos/培根蘆筍.mp4",
+  garlic: "/videos/蒜味奶油乳酪.mp4",
+};
+
 export const QUESTION_WEIGHTS = [1, 1, 2, 1, 2, 1] as const;
 
 export const QUESTIONS: QuizQuestion[] = [

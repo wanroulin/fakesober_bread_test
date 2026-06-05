@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { BreadHeader } from "./BreadHeader";
-import { captureElementAsPng, downloadDataUrl } from "@/lib/export-result";
 import { ProgressBar } from "./ProgressBar";
 import { IntroScreen } from "./IntroScreen";
 import { QuestionScreen } from "./QuestionScreen";
@@ -18,7 +17,6 @@ export function QuizApp() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<BreadType[]>([]);
   const [resultType, setResultType] = useState<BreadType | null>(null);
-  const [isSaving, setIsSaving] = useState(false);
   const resultCardRef = useRef<HTMLDivElement>(null);
 
   const handleStart = () => {
@@ -49,19 +47,6 @@ export function QuizApp() {
     setResultType(null);
   };
 
-  const handleSaveImage = useCallback(async () => {
-    const el = resultCardRef.current;
-    if (!el || isSaving) return;
-
-    setIsSaving(true);
-    try {
-      const dataUrl = await captureElementAsPng(el);
-      downloadDataUrl(dataUrl, `fake-sober-麵包人格-${Date.now()}.png`);
-    } finally {
-      setIsSaving(false);
-    }
-  }, [isSaving]);
-
   const isQuiz = phase === "quiz";
 
   return (
@@ -69,7 +54,7 @@ export function QuizApp() {
       className={`quiz-bg w-full ${isQuiz ? "h-dvh min-h-dvh" : "min-h-dvh"}`}
     >
       <div
-        className={`mx-auto flex w-full flex-col md:w-1/2 ${
+        className={`mx-auto flex w-full flex-col md:w-1/3 ${
           isQuiz
             ? "h-full px-0 py-0 md:h-auto md:min-h-dvh md:justify-center md:px-6 md:py-8"
             : "min-h-dvh px-4 py-6 sm:px-6 sm:py-10"
@@ -82,7 +67,7 @@ export function QuizApp() {
               : "flex-1 gap-5 rounded-3xl px-4 py-6 shadow-lg sm:gap-6 sm:px-8 sm:py-8"
           }`}
         >
-          <BreadHeader />
+          {phase !== "result" && <BreadHeader />}
 
           {isQuiz && (
             <ProgressBar
@@ -105,9 +90,7 @@ export function QuizApp() {
               <ResultScreen
                 resultType={resultType}
                 cardRef={resultCardRef}
-                onSave={handleSaveImage}
                 onRetake={handleRetake}
-                isSaving={isSaving}
               />
             )}
           </div>

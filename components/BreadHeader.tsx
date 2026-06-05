@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BREAD_IMAGES, BREAD_ORDER } from "@/lib/quiz-data";
+import { BreadCarousel } from "./BreadCarousel";
 
 export function BreadHeader() {
   return (
@@ -7,27 +7,12 @@ export function BreadHeader() {
       <Image
         src="/fake_sober_icon.png"
         alt="Fake Sober"
-        width={72}
-        height={72}
+        width={96}
+        height={96}
         className="h-20 w-20 object-contain sm:h-24 sm:w-24"
         priority
       />
-      <div className="flex w-full max-w-sm items-end justify-center gap-1.5 sm:max-w-md sm:gap-2">
-        {BREAD_ORDER.map((type) => (
-          <div
-            key={type}
-            className="relative flex-1 aspect-square max-w-[4rem] sm:max-w-[5rem]"
-          >
-            <Image
-              src={BREAD_IMAGES[type]}
-              alt=""
-              fill
-              className="object-contain drop-shadow-sm"
-              sizes="(max-width: 640px) 56px, 68px"
-            />
-          </div>
-        ))}
-      </div>
+      <BreadCarousel className="w-full" />
     </header>
   );
 }

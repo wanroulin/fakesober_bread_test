@@ -119,3 +119,93 @@ body {
   -webkit-touch-callout: default;
   user-select: none;
 }
+
+.touch-save-area {
+  -webkit-touch-callout: default;
+}
+
+/* 進度條連接線：空心軌道 + 實心由左向右填充 */
+.progress-line-track {
+  background: transparent;
+  border: 2px solid var(--quiz-progress-track);
+  box-sizing: border-box;
+  height: 6px;
+}
+
+@media (max-width: 767px) {
+  .progress-line-track {
+    height: 4px;
+    border-width: 1.5px;
+  }
+}
+
+.progress-line-fill {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.progress-line-fill[data-filled="true"] {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-line-fill {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* 五種麵包一字排開，緩慢橫向滑動 */
+@keyframes bread-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.bread-marquee-track {
+  animation: bread-marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.bread-marquee-fade {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 2rem;
+}
+
+.bread-marquee-fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--quiz-card) 0%, transparent 100%);
+}
+
+.bread-marquee-fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--quiz-card) 0%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bread-marquee-track {
+    animation: none;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bread-marquee-duplicate {
+    display: none;
+  }
+
+  .bread-marquee {
+    overflow: visible;
+  }
+
+  .bread-marquee-fade {
+    display: none;
+  }
+}
