@@ -56,7 +56,6 @@ export const QUESTIONS: QuizQuestion[] = [
     id: 3,
     title: "你最常在深夜做什麼？",
     weight: 2,
-    highlight: "權重 x2",
     options: [
       { label: "聽歌發呆", type: "earlgrey" },
       { label: "一直滑手機停不下來", type: "garlic" },
@@ -81,7 +80,6 @@ export const QUESTIONS: QuizQuestion[] = [
     id: 5,
     title: "你容易被哪種人吸引？",
     weight: 2,
-    highlight: "權重 x2",
     options: [
       { label: "很溫柔但低調的人", type: "original" },
       { label: "有自己世界觀的人", type: "earlgrey" },
@@ -94,7 +92,6 @@ export const QUESTIONS: QuizQuestion[] = [
     id: 6,
     title: "選一個 Fake Sober 的夜晚畫面",
     weight: 1,
-    highlight: "同分決勝題",
     options: [
       { label: "爵士樂＋窗邊雨天", type: "earlgrey" },
       { label: "一個人待到快打烊", type: "original" },

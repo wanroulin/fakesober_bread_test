@@ -4,7 +4,7 @@ type IntroScreenProps = {
 
 export function IntroScreen({ onStart }: IntroScreenProps) {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
+    <div className="flex flex-col items-center justify-center gap-6 py-2 text-center">
       <div className="space-y-3">
 
 

@@ -23,6 +23,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--quiz-bg);
   color: var(--foreground);
@@ -73,21 +78,46 @@ body {
   background: var(--quiz-tag-bg);
 }
 
-.quiz-card--quiz {
-  background: var(--quiz-card);
+.quiz-shell {
+  width: 100%;
+  margin-inline: auto;
 }
 
+.quiz-shell--centered {
+  width: 100%;
+}
+
+/* Intro／測驗共用卡片 */
+.quiz-card--main {
+  width: 100%;
+  padding: 24px 20px;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  overflow: visible;
+}
+
+.quiz-card-body,
+.question-screen {
+  overflow: visible;
+}
+
+/* 手機 */
 @media (max-width: 767px) {
-  .quiz-card--quiz {
-    height: 100%;
-    min-height: 100dvh;
+  .quiz-card--main {
+    min-height: min(88dvh, 720px);
   }
 }
 
+/* 電腦：35% 寬度，內容垂直置中，Intro／測驗同高 */
 @media (min-width: 768px) {
-  .question-screen {
-    height: 100%;
-    min-height: 0;
+  .quiz-shell {
+    width: 35%;
+    padding-inline: 0;
+  }
+
+  .quiz-card--main {
+    min-height: 620px;
+    padding: 28px 32px;
   }
 }
 

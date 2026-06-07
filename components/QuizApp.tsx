@@ -47,58 +47,50 @@ export function QuizApp() {
     setResultType(null);
   };
 
-  const isQuiz = phase === "quiz";
+  const isIntroOrQuiz = phase === "intro" || phase === "quiz";
 
   return (
-    <div
-      className={`quiz-bg w-full ${isQuiz ? "h-dvh min-h-dvh" : "min-h-dvh"}`}
-    >
+    <div className="quiz-bg min-h-dvh w-full">
       <div
-        className={`mx-auto flex w-full flex-col md:w-1/3 ${
-          isQuiz
-            ? "h-full px-0 py-0 md:h-auto md:min-h-dvh md:justify-center md:px-6 md:py-8"
-            : "min-h-dvh px-4 py-6 sm:px-6 sm:py-10"
+        className={`quiz-shell flex w-full flex-col ${
+          isIntroOrQuiz
+            ? "quiz-shell--centered min-h-dvh justify-center px-4 py-6 sm:px-6 sm:py-8"
+            : "min-h-dvh justify-center px-4 py-6 sm:px-6 sm:py-10"
         }`}
       >
-        <div
-          className={`quiz-card flex flex-col ${
-            isQuiz
-              ? "quiz-card--quiz h-full min-h-0 gap-4 rounded-none border-0 px-4 py-5 shadow-none md:h-[90dvh] md:max-h-[90dvh] md:gap-6 md:rounded-3xl md:border md:px-8 md:py-8 md:shadow-lg"
-              : "flex-1 gap-5 rounded-3xl px-4 py-6 shadow-lg sm:gap-6 sm:px-8 sm:py-8"
-          }`}
-        >
-          {(phase === "intro" || phase === "quiz") && (
+        {isIntroOrQuiz ? (
+          <div className="quiz-card quiz-card--main flex flex-col gap-4 sm:gap-5">
             <BreadHeader mode={phase === "intro" ? "intro" : "quiz"} />
-          )}
 
-          {isQuiz && (
-            <ProgressBar
-              current={questionIndex + 1}
-              total={QUESTIONS.length}
-            />
-          )}
-
-          <div className="flex min-h-0 flex-1 flex-col">
-            {phase === "intro" && <IntroScreen onStart={handleStart} />}
-
-            {isQuiz && (
-              <QuestionScreen
-                question={QUESTIONS[questionIndex]}
-                onSelect={handleAnswer}
+            {phase === "quiz" && (
+              <ProgressBar
+                current={questionIndex + 1}
+                total={QUESTIONS.length}
               />
             )}
 
-            {phase === "result" && resultType && (
-              <ResultScreen
-                resultType={resultType}
-                cardRef={resultCardRef}
-                onRetake={handleRetake}
-              />
-            )}
+            <div className="quiz-card-body flex flex-1 flex-col justify-center">
+              {phase === "intro" && <IntroScreen onStart={handleStart} />}
+
+              {phase === "quiz" && (
+                <QuestionScreen
+                  question={QUESTIONS[questionIndex]}
+                  onSelect={handleAnswer}
+                />
+              )}
+            </div>
           </div>
-        </div>
+        ) : (
+          resultType && (
+            <ResultScreen
+              resultType={resultType}
+              cardRef={resultCardRef}
+              onRetake={handleRetake}
+            />
+          )
+        )}
 
-        {!isQuiz && (
+        {phase === "intro" && (
           <p className="mt-4 text-center text-sm text-[var(--quiz-muted)] sm:text-base">
             Fake Sober｜白天人格測驗 ☀️🥐
           </p>

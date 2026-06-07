@@ -47,7 +47,7 @@ export function ResultScreen({
   });
 
   return (
-    <div className="flex flex-1 flex-col gap-5 animate-fade-in">
+    <div className="flex flex-col gap-5 animate-fade-in">
       <div
         ref={cardRef}
         className="save-capture touch-save-area cursor-pointer select-none rounded-2xl border border-[#e5d9cc] bg-[#faf6f0] p-5 sm:p-6"
@@ -62,7 +62,7 @@ export function ResultScreen({
 
         <div className="space-y-5 border-t border-[#e5d9cc] pt-5">
           <div className="flex flex-row items-center gap-3 sm:gap-4">
-            <div className="w-1/3 shrink-0">
+            <div className="w-1/2 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={result.image}
@@ -71,7 +71,7 @@ export function ResultScreen({
               />
             </div>
 
-            <div className="w-1/2 min-w-0 text-left">
+            <div className="w-1/2 min-w-0 shrink text-left">
               <h2 className="text-xl font-bold leading-tight text-[#3d2f24] sm:text-2xl">
                 {result.name}
               </h2>
